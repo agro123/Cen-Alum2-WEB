@@ -8,7 +8,7 @@
 CREATE TABLE Cliente (
      id_Cliente SERIAL  PRIMARY KEY,
      nombre VARCHAR(255) NOT NULL,
-     identificacion CHAR(10)
+     identificacion CHAR(10),
      direccion VARCHAR(255),
      telefono VARCHAR(32),
      email VARCHAR(255),
