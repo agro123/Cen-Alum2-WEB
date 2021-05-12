@@ -1,20 +1,25 @@
-import { Pool, Client }from 'pg'; // libreria de posgrest
-import dotenv from 'dotenv';
+const { Pool } =  require ('pg'); // libreria de posgrest
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 const config = {
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  password: process.env.PGPASSWORD,
-  database: process.env.PGDATABASE,
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
 };
 
-const pool = new Pool({ config });
-const client = new Client({ config });
+const pool = new Pool(config);
 
-module.exports = {
-  pool,
-  client,
-};
+try {
+  pool.connect();
+  console.log("Conexión con bd exitosa")
+}catch (e) {
+  console.log("Ocurrio un error al conectar la bd")
+}
+
+
+module.exports = pool;
+
+

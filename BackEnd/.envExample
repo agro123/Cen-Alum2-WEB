@@ -1,5 +1,1 @@
-    USER= 
-    HOST= 
-    PASSWORD= 
-    DATABASE= 
-    PORT= 
+DATABASE_URL =
