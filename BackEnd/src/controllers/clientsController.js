@@ -24,7 +24,7 @@ const createClient = async (req, res) => {
             phone,
             email
         ])
-        return res.status(200).json({message:'Cliente insertado correctamente'})
+        return res.status(200).json({ message: 'Cliente insertado correctamente' })
     }
     catch (e) {
         res.status(500).json({ message: "Ha ocurrido un error con el servidor" })
@@ -33,7 +33,7 @@ const createClient = async (req, res) => {
 
 const modifyClient = async (req, res) => {
 
-    try{
+    try {
 
         const { name, identify, address, phone, email, id } = req.body;
 
@@ -44,27 +44,28 @@ const modifyClient = async (req, res) => {
         telefono = $4,
         email = $5
         WHERE id_cliente = $6`,
-          [name, identify, address, phone, email, id])
+            [name, identify, address, phone, email, id])
+
+        return res.status(200).json({ message: 'Modificado con éxito' })
 
     }
-    catch(e)
-    {
-        return res.status(500).json({message: "Ha ocurrido un error con el servidor"})
+    catch (e) {
+        return res.status(500).json({ message: "Ha ocurrido un error con el servidor" })
     }
 }
 
-const deleteClient = async (req,res) => {
+const deleteClient = async (req, res) => {
 
-    try{
+    try {
         const id = req.params.id;
         console.log(req.params.id);
         await pool.query(`DELETE FROM cliente WHERE id_cliente= $1`, [id])
-        return res.status(200).json({messaje: "Cliente eliminado con éxito"})
+        return res.status(200).json({ messaje: "Cliente eliminado con éxito" })
 
-    }catch(e){
-        return res.status(200).json({message: "Ha ocurrido un error con el servidor"})
+    } catch (e) {
+        return res.status(200).json({ message: "Ha ocurrido un error con el servidor" })
     }
-} 
+}
 
 module.exports = {
     getClients,
