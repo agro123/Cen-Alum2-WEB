@@ -3,7 +3,8 @@ const { getEmpleados, createEmpleado,
     getEmpleadoById, deleteEmpleado,
     updateEmpleado } = require('../controllers/empleadoController');
 const { getClients, createClient, deleteClient } = require('../controllers/clientsController');
-const { getProducts } = require('../controllers/productsController');
+const { getProducts, createProduct, modifyProduct,
+    deleteProduct } = require('../controllers/productsController');
 const router = Router();
 
 //Empleados:
@@ -18,4 +19,8 @@ router.post('/client', createClient);
 router.delete('/client/:id', deleteClient);
 //Productos
 router.get('/product', getProducts);
+router.post('/product', createProduct);
+router.put('/product/:id', modifyProduct);
+router.delete('/product', deleteProduct);
+
 module.exports = router
