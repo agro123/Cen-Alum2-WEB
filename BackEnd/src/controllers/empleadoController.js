@@ -14,7 +14,7 @@ const getEmpleadoById = async (req, res) => {
   try {
     const id = req.params.id;
     const response = await pool.query(
-      `SELECT * FROM empleado WHERE cedula_empleado = $1 `,
+      `SELECT * FROM empleado WHERE cedula = $1 `,
       [id]
     );
     if (response.rowCount >= 1) {
@@ -36,7 +36,7 @@ const createEmpleado = async (req, res) => {
 
     await pool.query(
       `INSERT INTO empleado 
-      (cedula_empleado,email_empleado,direccion_empleado,telefono_empleado, nombre_empleado) 
+      (cedula,email,direccion,telefono, nombre) 
       VALUES
       ($1, $2, $3, $4, $5)`,
       [cedula, email, direccion, telefono, nombre]
@@ -53,7 +53,7 @@ const deleteEmpleado = async (req, res) => {
   try {
     const id = req.params.id;
     const response = await pool.query(
-      `DELETE FROM empleado WHERE cedula_empleado = $1 `,
+      `DELETE FROM empleado WHERE cedula = $1 `,
       [id]
     );
     if (response.rowCount >= 1) {
@@ -73,12 +73,12 @@ const updateEmpleado = async (req, res) => {
     const { nombre, cedula, email, direccion, telefono } = req.body;
     const response = await pool.query(
       `UPDATE empleado 
-    SET nombre_empleado = $1, 
-    cedula_empleado = $2,
-    email_empleado = $3,
-    direccion_empleado = $4,
-    telefono_empleado = $5
-    WHERE cedula_empleado = $6`,
+    SET nombre = $1, 
+    cedula = $2,
+    email = $3,
+    direccion = $4,
+    telefono = $5
+    WHERE cedula = $6`,
       [nombre, cedula, email, direccion, telefono, id]
     )
     if(response.rowCount>=1){
