@@ -17,6 +17,7 @@ router.put('/empleado/:id', updateEmpleado);
 router.get('/client', getClients);
 router.post('/client', createClient);
 router.delete('/client/:id', deleteClient);
+
 //Productos
 router.get('/product', getProducts);
 router.post('/product', createProduct);
