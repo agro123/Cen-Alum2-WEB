@@ -25,10 +25,14 @@ router.get('/product', getProducts);
 router.post('/product', createProduct);
 router.put('/product/', modifyProduct);
 router.delete('/product/:id', deleteProduct);
+
 //Materiales
 router.get('/material', getMaterial);
 router.post('/material', createMaterial);
 router.put('/material', modifyMaterial);
 router.delete('/material/:id', deleteMaterial);
+
+//Cotizacion
+
 
 module.exports = router
